@@ -99,8 +99,8 @@ explicit calls to the engine::
 
 
 As with all Mayavi code, you need to have the GUI mainloop running to
-have the visualization go live. Typing this code in `ipython -wthread`
-(or `ipython --gui=wx` in the recent versions) will do this for you.
+have the visualization go live.  See :ref:`running-mlab-scripts`
+for how to use mlab in IPython interactively.
 
 This explicit, object-oriented, code thus mirrors the `mlab.pipeline`
 code. It is more fine-grained, and gives you more control. For instance
@@ -221,17 +221,10 @@ contains some information on the recommended ways to script.
 Scripting from IPython
 ~~~~~~~~~~~~~~~~~~~~~~
 
-It is possible to script Mayavi using IPython_.  IPython will have to
-be invoked with the ``-wthread`` command line option in order to allow
-one to interactively script the mayavi application::
+It is possible to script Mayavi using IPython_. (see :ref:`ipython-gui-setup-for-mlab`
+for how to configure IPython properly).
 
- $ ipython -wthread
-
-In the recent IPython versions, the right switch is::
-
- $ ipython --gui=wx
-
-To start a visualization do the following::
+To start a visualization, do the following::
 
  from mayavi.plugins.app import main
  # Note, this does not process any command line arguments.
