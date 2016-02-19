@@ -26,20 +26,30 @@ It is can be used interactively with IPython_.
 
 .. warning:: 
 
-    When using IPython with mlab, as in the following examples, IPython must 
-    be invoked with the ``-wthread`` command line option like so::
+    When using IPython with mlab, the GUI integration option needs to be
+    set appropriately.  Since Pyface version 5.0, the default GUI toolkit
+    is `Qt4`.  With this default setting, IPython should be invoked with
+    the ``--gui=qt`` flag::
 
-         $ ipython -wthread
+         $ ipython --gui=qt
 
-    Or, for IPython recent version (0.11 and above)::
+    The user may choose to use `wxPython` as the GUI toolkit by setting
+    the shell environment variable ``ETS_TOOLKIT``::
+
+         $ export ETS_TOOLKIT=wx
+
+    In that case, IPython should be invoked like this::
 
          $ ipython --gui=wx
 
-    If you are using the `Enthought Python Distribution
-    <http://www.enthought.com/products/epd.php>`_, or the latest 
-    `Python(x,y) <http://www.pythonxy.com>`_ distribution, the Pylab menu
-    entry will start ipython with the right switch. In older release of
-    Python(x,y) you need to start "Interactive Console (wxPython)".
+    Or, for IPython version older than 0.11::
+
+         $ ipython -wthread
+
+    To switch back to using `qt4`, the user may unset ``ETS_TOOLKIT``
+    or set it to `qt4`::
+
+         $ export ETS_TOOLKIT=qt4
 
     For more details on using mlab and running scripts, read the section
     :ref:`running-mlab-scripts`
