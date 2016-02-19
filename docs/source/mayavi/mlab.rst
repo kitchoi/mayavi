@@ -27,29 +27,26 @@ It is can be used interactively with IPython_.
 .. warning:: 
 
     When using IPython with mlab, the GUI integration option needs to be
-    set appropriately.  Since Pyface version 5.0, the default GUI toolkit
-    is `Qt4`.  With this default setting, IPython should be invoked with
-    the ``--gui=qt`` flag::
+    set appropriately.
+
+    Since Pyface version 5.0, the default GUI toolkit is `Qt4`.
+    IPython should be invoked with the ``--gui=qt`` flag::
 
          $ ipython --gui=qt
 
     The user may choose to use `wxPython` as the GUI toolkit by setting
-    the shell environment variable ``ETS_TOOLKIT``::
+    the shell environment variable ``ETS_TOOLKIT`` and start IPython with
+    `wx`::
 
          $ export ETS_TOOLKIT=wx
-
-    In that case, IPython should be invoked like this::
-
          $ ipython --gui=wx
 
-    Or, for IPython version older than 0.11::
-
-         $ ipython -wthread
-
-    To switch back to using `qt4`, the user may unset ``ETS_TOOLKIT``
-    or set it to `qt4`::
+    It should be noted that Mayavi depends on `ETS_TOOLKIT` and not
+    the IPython `--gui` switch.
 
          $ export ETS_TOOLKIT=qt4
+         $ ipython --gui=wx             # inconsistent switch
+         >>> from mayavi import mlab    # qt4 is still being used
 
     For more details on using mlab and running scripts, read the section
     :ref:`running-mlab-scripts`
