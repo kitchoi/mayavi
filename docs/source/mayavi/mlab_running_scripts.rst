@@ -13,8 +13,8 @@ or more figures and allow the user to interact with them.
 
 .. _ipython-gui-setup-for-mlab:
 
-Using mlab interactively
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Using mlab interactively in IPython
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Using IPython_, mlab instructions can be run interactively, or in
 scripts using IPython_'s ``%run`` command::
