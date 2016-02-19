@@ -46,12 +46,6 @@ Installing ready-made distributions
 Doing it yourself
 ------------------
 
-    * :ref:`install-with-pip`
-    * :ref:`install-with-easy-install`
-    * :ref:`step-by-step-window-installation`
-    * :ref:`installing_git`
-
-
 .. _requirements-for-install:
 
 Requirements for manual installs
@@ -277,8 +271,10 @@ Downloading tarballs
 Relase tarballs for Mayavi can be found on the PyPI page, under 'download
 URL': http://pypi.python.org/pypi/mayavi/
 
+.. _install-in-mac-snow-leopard:
+
 Under Mac OSX Snow Leopard
--------------------------------
+..........................
 
 Under Mac OSX Snow Leopard, you may need to build VTK yourself. Here are
 instructions specific to Snow Leopard (thanks to Darren Dale for
