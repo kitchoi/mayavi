@@ -767,12 +767,13 @@ the code and docstrings for more details on the implementation.
 
 A utility module that makes VTK/TVTK easier to use from the Python
 interpreter.  The module uses the `tvtk.scene` module to
-provide a wxPython widget.  ivtk basically provides this scene along
+provide a Qt widget (or wxPython widget).
+ivtk basically provides this scene along
 with an optional Python interpreter (via PyCrust) and an optional
 pipeline browser view.
 
 For a stand-alone application one may simply run the module.  To use
-this under IPython_ (with -wthread) use the `viewer()` helper
+this under IPython_ (with --gui=qt) use the `viewer()` helper
 function.  For example::
 
     >>> from tvtk.tools import ivtk
@@ -785,8 +786,8 @@ function.  For example::
 
 
 ivtk provides several useful classes that you may use from either
-PyFace or wxPython -- `IVTK`, `IVTKWithCrust`, `IVTKWithBrowser` and
-`IVTKWithCrustAndBrowser`.  Again read the code and docstrings to
+PyFace or Qt or wxPython -- `IVTK`, `IVTKWithCrust`, `IVTKWithBrowser`
+and `IVTKWithCrustAndBrowser`.  Again read the code and docstrings to
 learn more.  An example using ivtk is also available in
 `examples/ivtk_example.py`.
 
