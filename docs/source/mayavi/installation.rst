@@ -93,6 +93,7 @@ are described in the following.
 .. _VTK: http://www.vtk.org
 .. _envisage: http://docs.enthought.com/envisage
 .. _Traits: http://docs.enthought.com/traits
+.. _PyQt4: http://pyqt.sourceforge.net/Docs/PyQt4/
 .. _wxPython: http://www.wxpython.org
 .. _setuptools: http://peak.telecommunity.com/DevCenter/setuptools
 .. _enstaller: http://code.enthought.com/enstaller
