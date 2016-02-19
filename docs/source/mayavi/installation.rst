@@ -65,7 +65,7 @@ Mayavi requires at the very minimum the following packages:
 The following requirements are really optional but strongly recommended,
 especially if you are new to Mayavi:
 
-    * wxPython_ 2.8.x
+    * PyQt4_ or wxPython_ 2.8.x
     * configobj_
     * Envisage_ == 3.x (`EnvisageCore` and `EnvisagePlugins`) 
       **Note** These last requirements can be automatically installed,
@@ -81,7 +81,7 @@ One can install the requirements in several ways.
 
    * Linux: Most Linux distributions will have installable binaries
      available for the some of the above.  For example, under Debian_ or
-     Ubuntu_ you would need ``python-vtk``, ``python-wxgtk2.6``,
+     Ubuntu_ you would need ``python-vtk``, ``python-qt4``, ``python-qt4-gl``,
      ``python-setuptools``, ``python-numpy``, ``python-configobj``.
 
 
