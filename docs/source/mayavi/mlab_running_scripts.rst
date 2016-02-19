@@ -35,33 +35,22 @@ Using together with Matplotlib's pylab
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you want to use Matplotlib's pylab with Mayavi's mlab in IPython you
-should:
+should start IPython with the appropriate switches.
 
-    * if your IPython version is greater than 0.11: start IPython with::
+    * If PyFace version >= 5.0.0, the default ETS GUI toolkit is Qt4. You
+      should start IPython with::
 
-        $ ipython --gui=wx --pylab=wx
+        $ ipython --gui=qt --matplotlib
 
-    * else, if your IPython version is greater than 0.8.4: start IPython with
-      the following options::
+    * If PyFace version < 5.0.0, the default ETS GUI toolkit is wxPython,
+      you should start IPython with::
 
-        $ ipython -pylab -wthread
+        $ ipython --gui=wx --matplotlib
 
-    * elsewhere, start IPython with the `-wthread` option::
+For IPython versions older than 1.0.0, you should check the IPython_
+documentation.
 
-        $ ipython -wthread
-
-      and **before** importing pylab, enter the following Python
-      commands::
-
-        >>> import matplotlib
-        >>> matplotlib.use('WxAgg')
-        >>> matplotlib.interactive(True)
-
-If you want matplotlib and mlab to work together by default in IPython,
-you can change you default matplotlib backend, by editing the
-`~/.matplotlib/matplotlibrc` to add the following line::
-
-    backend     : WXAgg
+.. _IPython: http://ipython.scipy.org
 
 .. topic:: Capturing mlab plots to integrate in pylab
 
