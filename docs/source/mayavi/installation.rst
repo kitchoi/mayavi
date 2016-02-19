@@ -43,24 +43,41 @@ Installing ready-made distributions
     available for RHEL3 and 4.
 
 
+Doing it yourself
+------------------
+
+    * :ref:`install-with-pip`
+    * :ref:`install-with-easy-install`
+    * :ref:`step-by-step-window-installation`
+    * :ref:`installing_git`
+
+
+.. _requirements-for-install:
+
 Requirements for manual installs
---------------------------------
+................................
 
 If you are not using full, ready-made, scientific Python distribution,
-you need to satisfy Mayavi's requirements (for a step-by-step guide on
-installing all these under windows, see :ref:`below
-<step-by-step-window-installation>`).
+you need to satisfy Mayavi's requirements.  However, depending on your
+installation procedure, these requirements may be automatically done
+for you.
 
 Mayavi requires at the very minimum the following packages:
 
-    * VTK_ >= 4.4 (5.x is ideal) with Python wrapper
-    * numpy_ >= 1.0.1
+    * VTK_ >= 5.0 with Python wrapper
+    * numpy_ >= 1.1.1
     * setuptools_ (for installation and egg builds)
-    * Traits_ >= 3.0 (`Traits`, `TraitsGUI` and `TraitsBackendWX` or
+    * Traits_ >= 4.0 (`Traits`, `TraitsGUI` and `TraitsBackendWX` or
       `TraitsBackendQt`, `EnthoughtBase`, `AppTools`)
-      **Note** Depending on your installation
-      procedure, you might not need to install manually these
-      requirements.
+
+.. note::
+
+   As new versions of VTK_ become available, Mayavi is continuously
+   updated to support the latest releases.  If your VTK version is
+   newer than 6.2.0, please check the Changelog_ for the current status
+   of Mayavi.
+
+.. _Changelog: auto/changes.html
 
 The following requirements are really optional but strongly recommended,
 especially if you are new to Mayavi:
@@ -79,7 +96,8 @@ One can install the requirements in several ways.
      `Enthought Canopy`_ comes with a compiler (mingw) and facilitates 
      building Mayavi.
 
-   * Linux: Most Linux distributions will have installable binaries
+   * Linux: In addition to using `Enthought Canopy`_, most Linux
+     distributions will have installable binaries
      available for the some of the above.  For example, under Debian_ or
      Ubuntu_ you would need ``python-vtk``, ``python-qt4``, ``python-qt4-gl``,
      ``python-setuptools``, ``python-numpy``, ``python-configobj``.
@@ -106,26 +124,41 @@ are described in the following.
 .. _Anaconda: https://store.continuum.io/cshop/anaconda/
 .. _configobj: http://pypi.python.org/pypi/ConfigObj/
 
-Doing it yourself: Python packages: Eggs
------------------------------------------
+
+.. _install-with-pip:
+   
+Installing with `pip`
+.....................
+
+pip_ is the PyPA_ recommended tool for installing Python packages from PyPI_.
+The latest version of Mayavi available on PyPI can be found
+`here <https://pypi.python.org/pypi/mayavi>`_.
+
+Among the packages required by Mayavi, VTK Python wrapper is not available
+from PyPI.  Therefore you will need to install it first before proceeding;
+e.g. it is available from `Enthought Canopy`_ or Linux installable binaries.
+
+After installing VTK Python, you can install mayavi using `pip`::
+
+  $ pip install mayavi
+
+.. _pip: https://pip.pypa.io/en/stable/
+.. _PyPA: https://packaging.python.org/en/latest/current/
+.. _PyPI: https://pypi.python.org/pypi
+
+.. _install-with-easy-install:
 
 Installing with `easy_install`
 ...............................
 
 First make sure you have the prerequisites for Mayavi installed, as
-indicated in the previous section, i.e. the following packages:
-
-    * VTK_ >= 4.4 (5.x is ideal)
-    * numpy_ >= 1.0.1
-    * wxPython_ >= 2.8.0
-    * configobj_
-    * setuptools_ (for installation and egg builds; later the better)
+indicated in :ref:`requirements-for-install`.
 
 Mayavi_ is part of the Enthought Tool Suite (ETS_).  As such, it is
 distributed as part of ETS and therefore binary packages and source
 packages of ETS will contain Mayavi. Mayavi releases are almost always
 made along with an ETS release.  You may choose to install all of ETS or
-just Mayavi alone from a release. 
+just Mayavi alone from a release.
 
 ETS has been organized into several different Python packages.  These
 packages are distributed as Python Eggs_.  Python eggs are fairly
@@ -133,8 +166,8 @@ sophisticated and carry information on dependencies with other eggs.  As
 such they are rapidly becoming the standard for distributing Python
 packages.
 
-The easiest way to install Mayavi with eggs is to use pre-built eggs 
-built for your particular platform and downloaded by `easy_install`. 
+The user may install Mayavi with eggs using the pre-built eggs
+built for your particular platform and downloaded by `easy_install`.
 Alternatively `easy_install` can build the eggs from the source tarballs.
 This is also fairly easy to do if you have a proper build environment.
 
@@ -242,7 +275,7 @@ Downloading tarballs
 .....................
 
 Relase tarballs for Mayavi can be found on the PyPI page, under 'download
-URL': http://pypi.python.org/pypi/mayavi/4.2.0
+URL': http://pypi.python.org/pypi/mayavi/
 
 Under Mac OSX Snow Leopard
 -------------------------------
@@ -296,78 +329,40 @@ The bleeding edge: Git
 
 If you want to get the latest development version of Mayavi (e.g. for
 developing Mayavi or contributing to the documentation), we
-recommend that you check it out from github: Mayavi is hosted on github,
-with the rest of the Enthought open source packages: the 'ETS' (Enthought
-Tool Suite): https://github.com/enthought
+recommend that you check it out from github: Mayavi is hosted on github
+with its own repository: https://github.com/enthought/mayavi as part of the
+Enthought open source packages (ETS): https://github.com/enthought/ets
 
 Mayavi depends on several packages that are part of ETS.  It is highly
 likely that the in-development mayavi version may depend on some feature
-of an as yet unreleased component.  Therefore, it is very convenient to
-get all the relevant ETS projects that Mayavi recursively depends on in
-one single checkout. For this purpose a script `ets.py` is available.
+of an unreleased component.  The ETS repository is a meta-project
+wrapper that bundles up the collection of projects.  It is very convenient
+to get all the relevant ETS projects that Mayavi recursively depends on
+with a single checkout.
 
- #. Make sure there is no other ETS package installed in your pythonpath::
+It provides the `ets` module, which allows pulling all other ETS projects
+from github, and other useful features.  To install ETS::
 
-     $ python
-     >>> import enthought
-     Traceback (most recent call last):
-       File "<stdin>", line 1, in <module>
-     ImportError: No module named enthought
+  mkdir ets
+  cd ets
+  git clone http://github.com/enthought/ets.git
+  cd ets
+  python setup.py develop
+  cd ..
+  ets -h
 
-    If you *don't* get the ImportError (e.g. importing ``enthought`` succeeds),
-    then there is no way to install the git Mayavi version over it (even if you
-    put it first in your PYTHONPATH), because the older (setuptools managed)
-    ETS packages will get picked up too and they will mess up things. This
-    behavior might be surprising if you are new to setuptools.
+To clone all the ETS projects::
 
-    So for example if you use Ubuntu or Debian, you need to first remove all ETS 
-    packages (in Ubuntu 9.04, you need to remove all of these: ``mayavi2 python-apptools
-    python-enthoughtbase python-envisagecore python-envisageplugins
-    python-traits python-traitsbackendwx python-traitsgui``).
+  ets clone
 
- #. Create an empty directory and download in it the `ets.py` script from
-    `https://github.com/enthought/ets/raw/master/ets.py <https://github.com/enthought/ets/raw/master/ets.py>`_
+.. note:: 
 
- #. To get just the sources for mayavi and all its dependencies do this::
+   The `ets` utility downloads the entire ETS, which is more than you need
+   to build Mayavi. As the extra packages have additional
+   dependencies, they may render the build harder. You can remove
+   safely the following directories::
 
-      $ python ets.py clone
-
-    This will download from github the source code for the entire ETS.
-
-    .. note:: 
-
-       The `ets.py` downloads the entire ETS, which is more than you need
-       to build Mayavi. As the extra packages have additional
-       dependencies, they may render the build harder. You can remove
-       safely the following directories::
-
-            blockcanvas chaco codetools enable graphcanvas scimath 
-
- #. Once the sources are checked out you may either:
-
-    #. Install a development version, to track changes to github easily
-       (recommended)::
-
-        $ python ets.py develop
-
-       This will install all the checked out sources by executing a ``python 
-       setup.py develop`` in each sub directory.
-
-       ..  note::
-
-        To install of the packages in a different location than the
-        default one, eg '~/usr/', use the following syntax::
-
-            $ python ets.py develop --prefix ~/usr
-
-        make sure that the corresponding site-packages folder is in your 
-        PYTHONPATH environment variable (for the above example it would
-        be: '~/usr/lib/python2.x/site-packages/'
-
-    #. Alternatively, if you'd like just ``Mayavi`` installed via a
-       standard  ``python setup.py install`` you may do::
-
-        $ python ets.py develop -f ../dist
+     blockcanvas chaco codetools enable graphcanvas scimath 
 
 You should now have the latest version of Mayavi installed and usable.
 
