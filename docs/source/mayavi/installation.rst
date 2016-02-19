@@ -53,7 +53,7 @@ installing all these under windows, see :ref:`below
 
 Mayavi requires at the very minimum the following packages:
 
-    * VTK_ >= 4.4 (5.x is ideal)
+    * VTK_ >= 4.4 (5.x is ideal) with Python wrapper
     * numpy_ >= 1.0.1
     * setuptools_ (for installation and egg builds)
     * Traits_ >= 3.0 (`Traits`, `TraitsGUI` and `TraitsBackendWX` or
